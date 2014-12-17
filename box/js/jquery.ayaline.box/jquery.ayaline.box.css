@@ -1,0 +1,99 @@
+.ayalinebox-wrap *{
+    font-family: arial, sans-serif;
+}
+.ayalinebox-wrap{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999999;
+}
+.ayalinebox-overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #FFF;
+    opacity: 0.6;
+    z-index: 1;
+}
+.ayalinebox-overlay-inner{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.ayalinebox-global{
+    position: relative;
+    top: 150px;
+    width: 50%;
+    margin: 0 auto;
+    z-index: 2;
+}
+.ayalinebox-global-inner{
+    position: relative;
+    top: 0;
+    /*height: 100%;*/
+    margin: 0 auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 5px #999999;
+    -moz-box-shadow: 0 0 5px #999999;
+    box-shadow: 0 0 5px #999999;
+    background-color: #FFF;
+    z-index: 1;
+}
+.ayalinebox-content-wrap{
+    position: relative;
+    top: 0;
+    padding: 10px;
+    z-index: 1;
+}
+.ayalinebox-content-wrap-inner{
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+.ayalinebox-btn-close{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    color: #FFF;
+    background-color: #ff3300;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 5px #999999;
+    -moz-box-shadow: 0 0 5px #999999;
+    box-shadow: 0 0 5px #999999;
+    overflow: hidden;
+    z-index: 2;
+}
+.ayalinebox-btn-close:after{
+    content: "x";
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.ayalinebox-title-wrap{
+    position: relative;
+    top: 0;
+    padding: 5px 10px;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 979px) {
+    .ayalinebox-global{
+        width: auto;
+        margin: 10px;
+    }
+}

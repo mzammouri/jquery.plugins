@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery aYaline Box</title>
+    <link rel="stylesheet" href="../_all/css/ayaline.all.css">
+    <link rel="stylesheet" href="css/ayaline.demo.box.css">
+    <link rel="stylesheet" href="js/jquery.ayaline.box/jquery.ayaline.box.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../_all/js/ayaline.all.js"></script>
+    <script src="js/jquery.ayaline.box/jquery.ayaline.box.js"></script>
+</head>
+<body>
+    <h1 class="page-title">jQuery aYaline Box</h1>
+    <div class="global">
+        <div class="global-inner">
+            <h2 class="content-title">Exemples:</h2>
+            <ul class="examples-content">
+                <li class="example-content-item">
+                    <h3 class="example-title">Content Html</h3>
+                    <ul class="example-code-and-demo">
+                        <li class="example-code">
+                            <h3 class="example-code-title">Sources</h3>
+                            <code>
+                                &lt;a href="#" onclick="$.aYaline.box({'content':'content html', 'contentType':'html'});return false;"&gt;Click here to show demo &lt;/a&gt;
+                            </code>
+                        </li>
+                        <li class="example-demo">
+                            <h3 class="example-code-title">Demo</h3>
+                            <a href="#" onclick="$.aYaline.box({'content':'content html', 'contentType':'html'});return false;">Click here to show demo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="example-content-item">
+                    <h3 class="example-title">Content Ajax</h3>
+                    <ul class="example-code-and-demo">
+                        <li class="example-code">
+                            <h3 class="example-code-title">Sources</h3>
+                            <code>
+                                &lt;a href="#" onclick="$.aYaline.box({'content':'_examples/ajax_content.html', 'contentType':'ajax'});return false;"&gt;Click here to show demo&lt;/a&gt;
+                            </code>
+                        </li>
+                        <li class="example-demo">
+                            <h3 class="example-code-title">Demo</h3>
+                            <a href="#" onclick="$.aYaline.box({'content':'_examples/ajax_content.html', 'contentType':'ajax'});return false;">Click here to show demo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="example-content-item">
+                    <h3 class="example-title">Content Iframe</h3>
+                    <ul class="example-code-and-demo">
+                        <li class="example-code">
+                            <h3 class="example-code-title">Sources</h3>
+                            <code>
+                                &lt;a href="#" onclick="$.aYaline.box({'content':'_examples/iframe_content.html', 'contentType':'iframe'});return false;"&gt;Click here to show demo&lt;/a&gt;
+                            </code>
+                        </li>
+                        <li class="example-demo">
+                            <h3 class="example-code-title">Demo</h3>
+                            <a href="#" onclick="$.aYaline.box({'content':'_examples/iframe_content.html', 'contentType':'iframe'});return false;">Click here to show demo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="example-content-item">
+                    <h3 class="example-title">Content Inline</h3>
+                    <ul class="example-code-and-demo">
+                        <li class="example-code">
+                            <h3 class="example-code-title">Sources</h3>
+                            <code>
+                                &lt;a href="#" onclick="$.aYaline.box({'content':'#content-to-appear-in-box', 'contentType':'inline'});return false;"&gt;Click here to show demo&lt;/a&gt;
+                            </code>
+                        </li>
+                        <li class="example-demo">
+                            <h3 class="example-code-title">Demo</h3>
+                            <div id="content-to-appear-in-box">This content will appear in box</div>
+                            <a href="#" onclick="$.aYaline.box({'content':'#content-to-appear-in-box', 'contentType':'inline'});return false;">Click here to show demo</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
