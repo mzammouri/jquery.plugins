@@ -1,7 +1,7 @@
-.ayalinebox-wrap *{
+.zBox-wrap *{
     font-family: arial, sans-serif;
 }
-.ayalinebox-wrap{
+.zBox-wrap{
     position: absolute;
     top: 0;
     right: 0;
@@ -9,7 +9,7 @@
     bottom: 0;
     z-index: 999999;
 }
-.ayalinebox-overlay{
+.zBox-overlay{
     position: fixed;
     top: 0;
     right: 0;
@@ -19,7 +19,7 @@
     opacity: 0.6;
     z-index: 1;
 }
-.ayalinebox-overlay-inner{
+.zBox-overlay-inner{
     position: fixed;
     top: 0;
     right: 0;
@@ -27,14 +27,14 @@
     bottom: 0;
     z-index: 1;
 }
-.ayalinebox-global{
+.zBox-global{
     position: relative;
     top: 150px;
     width: 50%;
     margin: 0 auto;
     z-index: 2;
 }
-.ayalinebox-global-inner{
+.zBox-global-inner{
     position: relative;
     top: 0;
     /*height: 100%;*/
@@ -48,18 +48,18 @@
     background-color: #FFF;
     z-index: 1;
 }
-.ayalinebox-content-wrap{
+.zBox-content-wrap{
     position: relative;
     top: 0;
     padding: 10px;
     z-index: 1;
 }
-.ayalinebox-content-wrap-inner{
+.zBox-content-wrap-inner{
     position: relative;
     top: 0;
     z-index: 1;
 }
-.ayalinebox-btn-close{
+.zBox-btn-close{
     position: absolute;
     top: -10px;
     right: -10px;
@@ -76,7 +76,7 @@
     overflow: hidden;
     z-index: 2;
 }
-.ayalinebox-btn-close:after{
+.zBox-btn-close:after{
     content: "x";
     display: block;
     font-size: 13px;
@@ -84,7 +84,7 @@
     text-align: center;
     cursor: pointer;
 }
-.ayalinebox-title-wrap{
+.zBox-title-wrap{
     position: relative;
     top: 0;
     padding: 5px 10px;
@@ -92,7 +92,7 @@
 }
 
 @media only screen and (max-width: 979px) {
-    .ayalinebox-global{
+    .zBox-global{
         width: auto;
         margin: 10px;
     }

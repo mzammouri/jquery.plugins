@@ -1,18 +1,15 @@
 'use strict';
-(function($) {
-    var $aYa = {};
+(function($, document, window) {
+    var $Z = {};
 
-    /* Init Local Variable $aYa.box for box plugin */
-    $aYa.box = {};
+    /* Init Local Variable $Z.box for box plugin */
+    $Z.box = {};
 
-    /* Init Local Variable $aYa.box.factory for box plugin factory */
-    $aYa.box.factory = function(opts) {
+    /* Init Local Variable $Z.box.factory for box plugin factory */
+    $Z.box.factory = function(opts) {
         var _self = this;
-        var _options = $.extend({}, $aYa.box.factory.config.defaultOptions, opts);
-        var _boxElementsArray = null;
-
-        _self.options = _options;
-        _self.boxElementsArray = _boxElementsArray;
+        _self.options = $.extend($Z.box.factory.config.defaultOptions, opts);
+        _self.boxElementsArray = false;
 
         var _factory = {
             init : function(){
@@ -20,7 +17,7 @@
                 _factory.initContent();
             },
             initBoxElements : function(){
-                if(typeof $aYa.box.factory.config.elements.wrap.element === 'undefined' || !$aYa.box.factory.config.elements.wrap.element){
+                if(typeof $Z.box.factory.config.elements.wrap.element === 'undefined' || !$Z.box.factory.config.elements.wrap.element){
                     _factory.bindBoxElements();
                 }
                 _factory.initCloseBox();  
@@ -28,7 +25,7 @@
             bindBoxElements : function(boxElement, boxParentElement){
                 var isBoxElementWrap = false;
                 if(typeof boxElement === 'undefined' || !boxElement){
-                    boxElement = $aYa.box.factory.config.elements.wrap;
+                    boxElement = $Z.box.factory.config.elements.wrap;
                     isBoxElementWrap = true;
                 }
                 if(typeof boxParentElement === 'undefined' || !boxParentElement){
@@ -51,11 +48,11 @@
                         _factory.bindBoxElements(boxChildElement, boxElement.element);
                     }
                 }
-                return $aYa.box.factory.config.elements;
+                return $Z.box.factory.config.elements;
             },
             bindBoxElementsArray : function(boxElement, boxElementKey, elementsArray){
                 if(typeof boxElement === 'undefined' || !boxElement){
-                    boxElement = $aYa.box.factory.config.elements.wrap;
+                    boxElement = $Z.box.factory.config.elements.wrap;
                 }
                 if(typeof boxElementKey === 'undefined' || !boxElementKey){
                     boxElementKey = 'wrap';
@@ -74,10 +71,10 @@
                 return elementsArray;
             },
             getBoxElementsArray: function(){
-                if(!_boxElementsArray){
-                    _boxElementsArray = _factory.bindBoxElementsArray();
+                if(!_self.boxElementsArray){
+                    _self.boxElementsArray = _factory.bindBoxElementsArray();
                 }
-                return _boxElementsArray;
+                return _self.boxElementsArray;
             },
             getBoxElement : function(boxKey){
                 var boxElementsArray = _factory.getBoxElementsArray();
@@ -98,12 +95,12 @@
                     return _self;
                 }
                 _buttonClose.element.click(function(){
-                    if(typeof _options.beforeCloseBox === 'function'){
-                        _options.beforeCloseBox(_self);
+                    if(typeof _self.options.beforeCloseBox === 'function'){
+                        _self.options.beforeCloseBox(_self);
                     }
-                    _wrapBox.element.hide(_options.display.effect);
-                    if(typeof _options.afterCloseBox === 'function'){
-                        _options.afterCloseBox(_self);
+                    _wrapBox.element.hide(_self.options.display.effect);
+                    if(typeof _self.options.afterCloseBox === 'function'){
+                        _self.options.afterCloseBox(_self);
                     }
                 });
                 
@@ -113,12 +110,12 @@
                     return _self;
                 }
                 _overlay.element.click(function(){
-                    if(typeof _options.beforeCloseBox === 'function'){
-                        _options.beforeCloseBox(_self);
+                    if(typeof _self.options.beforeCloseBox === 'function'){
+                        _self.options.beforeCloseBox(_self);
                     }
-                    _wrapBox.element.hide(_options.display.effect);
-                    if(typeof _options.afterCloseBox === 'function'){
-                        _options.afterCloseBox(_self);
+                    _wrapBox.element.hide(_self.options.display.effect);
+                    if(typeof _self.options.afterCloseBox === 'function'){
+                        _self.options.afterCloseBox(_self);
                     }
                 });
                 
@@ -128,12 +125,12 @@
                     return _self;
                 }
                 _overlayIn.element.click(function(){
-                    if(typeof _options.beforeCloseBox === 'function'){
-                        _options.beforeCloseBox(_self);
+                    if(typeof _self.options.beforeCloseBox === 'function'){
+                        _self.options.beforeCloseBox(_self);
                     }
-                    _wrapBox.element.hide(_options.display.effect);
-                    if(typeof _options.afterCloseBox === 'function'){
-                        _options.afterCloseBox(_self);
+                    _wrapBox.element.hide(_self.options.display.effect);
+                    if(typeof _self.options.afterCloseBox === 'function'){
+                        _self.options.afterCloseBox(_self);
                     }
                 });
                 return _self;
@@ -144,37 +141,37 @@
                     console.log('Error : content box not found');
                     return false;
                 }
-                switch(_options.contentType){
+                switch(_self.options.contentType){
                     case 'html'     : {
-                            _contentInBox.element.html(_options.content);
+                            _contentInBox.element.html(_self.options.content);
                             break;
                     }
                     case 'inline'   : {
-                            _contentInBox.element.html(_options.content);
+                            _contentInBox.element.html(_self.options.content);
                             break;
                     }
                     case 'iframe'   : {
-                            _contentInBox.element.html(_options.content);
+                            _contentInBox.element.html(_self.options.content);
                             break;
                     }
                     case 'ajax'     : {
-                            _contentInBox.element.html(_options.content);
+                            _contentInBox.element.html(_self.options.content);
                             break;
                     }
                     default : {
-                            _contentInBox.element.html(_options.content);
+                            _contentInBox.element.html(_self.options.content);
                             break;
                     }
                 }
             },
             open : function(){
                 _factory.init();
-                _factory.getBoxElement('wrap').element.show(_options.display.effect);
+                _factory.getBoxElement('wrap').element.show(_self.options.display.effect);
                 $(document).scrollTop('0');
             },
             close : function(){
                 _factory.init();
-                _factory.getBoxElement('wrap').element.hide(_options.display.effect);
+                _factory.getBoxElement('wrap').element.hide(_self.options.display.effect);
             }
         };
         _factory.open();
@@ -193,60 +190,60 @@
     };
     
     
-    $aYa.box.factory.config = {};
-    $aYa.box.factory.config.elements = {
+    $Z.box.factory.config = {};
+    $Z.box.factory.config.elements = {
         wrap            : {
             settings        : {
-                class           : 'ayalinebox-wrap'
+                class           : 'zBox-wrap'
             },
             children            : {
                 overlay     : {
                     settings        : {
-                        class           : 'ayalinebox-overlay'
+                        class           : 'zBox-overlay'
                     },
                     children        : {
                         overlayIn       : {
                             settings        : {
-                                class           : 'ayalinebox-overlay-inner'
+                                class           : 'zBox-overlay-inner'
                             }
                         }
                     }
                 },
                 global              : {
                     settings            : {
-                        class               : 'ayalinebox-global'
+                        class               : 'zBox-global'
                     },
                     children            : {
                         globalIn              : {
                             settings            : {
-                                class               : 'ayalinebox-global-inner'
+                                class               : 'zBox-global-inner'
                             },
                             children            : {
                                 titleWrap               : {
                                     settings            : {
-                                        class               : 'ayalinebox-title-wrap'
+                                        class               : 'zBox-title-wrap'
                                     },
                                     children            : {
                                         titleWrapIn           : {
                                             settings            : {
-                                                class               : 'ayalinebox-title-wrap-inner'
+                                                class               : 'zBox-title-wrap-inner'
                                             }
                                         }
                                     }
                                 },
                                 buttonClose         : {
                                     settings            : {
-                                        class               : 'ayalinebox-btn-close'
+                                        class               : 'zBox-btn-close'
                                     }
                                 },
                                 contentWrap         : {
                                     settings            : {
-                                        class               : 'ayalinebox-content-wrap'
+                                        class               : 'zBox-content-wrap'
                                     },
                                     children            : {
                                         contentWrapIn         : {
                                             settings            : {
-                                                class               : 'ayalinebox-content-wrap-inner'
+                                                class               : 'zBox-content-wrap-inner'
                                             }
                                         }
                                     }
@@ -261,7 +258,7 @@
 
     /* Default base config options */
     /* @todo change the structure : reorganize by content types in first level */
-    $aYa.box.factory.config.defaultOptions = {
+    $Z.box.factory.config.defaultOptions = {
         content         : '',//Content URL, HTML, SELECTOR
         contentType     : 'html',//Values : html, inline, iframe, ajax
         display         : {
@@ -274,21 +271,21 @@
     };
 
     /* Content type html */
-    $aYa.box.factory.typeHtml = function(opts){
+    $Z.box.factory.typeHtml = function(opts){
         var _self = this;
-        _self.factoryInstance = new $aYa.box.factory(opts);
+        _self.factoryInstance = new $Z.box.factory(opts);
         return _self;
     };
 
     /* Content type inline */
-    $aYa.box.factory.typeInline = function(opts){
+    $Z.box.factory.typeInline = function(opts){
         var _self = this;
         opts.content = $(opts.content);
 
         if(typeof opts.contentPlaceHolder === 'undefined' || !opts.contentPlaceHolder){
             opts.contentPlaceHolder = $('<div/>',{
-                id      : ('ayalinebox-element-placeholder-' + Math.random()).replace('.',''),
-                class   : 'ayalinebox-element-placeholder',
+                id      : ('zBox-element-placeholder-' + Math.random()).replace('.',''),
+                class   : 'zBox-element-placeholder',
                 style   : 'display: none!important'
             });
         }
@@ -298,75 +295,78 @@
             factory.options.contentPlaceHolder.after(factory.options.content);
         };
 
-        _self.factoryInstance = new $aYa.box.factory(opts);
+        _self.factoryInstance = new $Z.box.factory(opts);
         return _self;
     };
 
     /* Content type iframe */
-    $aYa.box.factory.typeIframe = function(opts){
+    $Z.box.factory.typeIframe = function(opts){
         var _self = this;
         var iframe = $('<iframe/>',{
-            id      : ('ayalinebox-iframe-' + Math.random()).replace('.',''),
-            class   : 'ayalinebox-iframe',
+            id      : ('zBox-iframe-' + Math.random()).replace('.',''),
+            class   : 'zBox-iframe',
             src     : opts.content,
             style   : 'border: 0;width: 100%'
         });
         opts.content = iframe;
 
-        _self.factoryInstance = new $aYa.box.factory(opts);
+        _self.factoryInstance = new $Z.box.factory(opts);
         return _self;
     };
 
     /* Content type ajax */
-    $aYa.box.factory.typeAjax = function(opts){
+    $Z.box.factory.typeAjax = function(opts){
         var _self = this;
         $.ajax({
             url     : opts.content,
             success : function(data){
                 opts.content = data;
-                _self.factoryInstance = new $aYa.box.factory(opts);
+                _self.factoryInstance = new $Z.box.factory(opts);
             }
         });
 
         return _self;
     };
 
-    /* Init Global aYaline Plugins Variable $.aYaline  */
-    if(typeof $.aYaline === 'undefined'){
-        $.aYaline = {};
+    /* Init Global aYaline Plugins Variable $.z  */
+    if(typeof $.z === 'undefined'){
+        $.z = {};
     }
 
-    /* Init Global aYaline Box Plugin Variable $.aYaline.box  */
-    $.aYaline.box = function(opts) {
+    /* Init Global aYaline Box Plugin Variable $.z.box  */
+    $.z.box = function(opts) {
         switch (opts.contentType){
             case 'html' : {
-                return new $aYa.box.factory.typeHtml(opts);
+                return new $Z.box.factory.typeHtml(opts);
             }
             case 'inline' : {
-                return new $aYa.box.factory.typeInline(opts);
+                return new $Z.box.factory.typeInline(opts);
             }
             case 'iframe' : {
-                return new $aYa.box.factory.typeIframe(opts);
+                return new $Z.box.factory.typeIframe(opts);
             }
             case 'ajax' : {
-                return new $aYa.box.factory.typeAjax(opts);
+                return new $Z.box.factory.typeAjax(opts);
             }
             default : {
-                return new $aYa.box.factory.typeHtml(opts);
+                return new $Z.box.factory.typeHtml(opts);
             }
         }
         return this;
     }
+    
+    /* Alias zBox*/
+    $.zBox = $.z.box;
 
-    /* Init Global aYaline jQuery Plugins Variable $.fn.aYaline  */
-    if(typeof $.fn.aYaline === 'undefined'){
-        $.fn.aYaline = {};
+    /* Init Global aYaline jQuery Plugins Variable $.fn.z  */
+    if(typeof $.fn.z === 'undefined'){
+        $.fn.z = {};
     }
 
-    /* Init Global aYaline jQuery Plugins Variable $.fn.aYaline  */
-    $.fn.aYaline.box = function(opts){
+    /* Init Global aYaline jQuery Plugins Variable $.fn.z  */
+    $.fn.z.box = function(opts){
         /* @todo: add code here */
         return this;
     };
 
-})(jQuery);
+})(jQuery, document, window) ;
