@@ -20,7 +20,7 @@
                 if(typeof $Z.box.factory.config.elements.wrap.element === 'undefined' || !$Z.box.factory.config.elements.wrap.element){
                     _factory.bindBoxElements();
                 }
-                _factory.initCloseBox();  
+                _factory.initCloseBox();
             },
             bindBoxElements : function(boxElement, boxParentElement){
                 var isBoxElementWrap = false;
@@ -31,7 +31,7 @@
                 if(typeof boxParentElement === 'undefined' || !boxParentElement){
                     boxParentElement = $('body');
                 }
-                
+
                 boxElement.settings.id = (boxElement.settings.class + '-' + Math.random() + '').replace('.','');
                 boxElement.element = $('<div/>', {
                     id      : boxElement.settings.id,
@@ -41,7 +41,7 @@
                     boxElement.element.hide();
                 }
                 boxParentElement.prepend(boxElement.element);
-                
+
                 if(typeof boxElement.children !== 'undefined'){
                     for(var i in boxElement.children){
                         var boxChildElement = boxElement.children[i];
@@ -61,7 +61,7 @@
                     elementsArray = [];
                 }
                 elementsArray[boxElementKey] = boxElement;
-                
+
                 if(typeof boxElement.children !== 'undefined'){
                     for(var i in boxElement.children){
                         var boxChildElement = boxElement.children[i];
@@ -103,7 +103,7 @@
                         _self.options.afterCloseBox(_self);
                     }
                 });
-                
+
                 var _overlay = _factory.getBoxElement('overlay');
                 if(!_overlay || typeof _overlay.element === 'undefined'){
                     console.log('Error : overlay box not found');
@@ -118,7 +118,7 @@
                         _self.options.afterCloseBox(_self);
                     }
                 });
-                
+
                 var _overlayIn = _factory.getBoxElement('overlayIn');
                 if(!_overlayIn || typeof _overlayIn.element === 'undefined'){
                     console.log('Error : overlay box not found');
@@ -143,24 +143,24 @@
                 }
                 switch(_self.options.contentType){
                     case 'html'     : {
-                            _contentInBox.element.html(_self.options.content);
-                            break;
+                        _contentInBox.element.html(_self.options.content);
+                        break;
                     }
                     case 'inline'   : {
-                            _contentInBox.element.html(_self.options.content);
-                            break;
+                        _contentInBox.element.html(_self.options.content);
+                        break;
                     }
                     case 'iframe'   : {
-                            _contentInBox.element.html(_self.options.content);
-                            break;
+                        _contentInBox.element.html(_self.options.content);
+                        break;
                     }
                     case 'ajax'     : {
-                            _contentInBox.element.html(_self.options.content);
-                            break;
+                        _contentInBox.element.html(_self.options.content);
+                        break;
                     }
                     default : {
-                            _contentInBox.element.html(_self.options.content);
-                            break;
+                        _contentInBox.element.html(_self.options.content);
+                        break;
                     }
                 }
             },
@@ -175,7 +175,7 @@
             }
         };
         _factory.open();
-        
+
         /* Public acces methods */
         _self.open = function(){
             _factory.open();
@@ -185,11 +185,20 @@
             _factory.close();
             return _self;
         };
-        
+
+
+        $.z.box.close = function(){
+            _factory.close();
+        };
+
+        $.z.box.open = function(){
+            _factory.open();
+        };
+
         return _self;
     };
-    
-    
+
+
     $Z.box.factory.config = {};
     $Z.box.factory.config.elements = {
         wrap            : {
@@ -353,8 +362,8 @@
             }
         }
         return this;
-    }
-    
+    };
+
     /* Alias zBox*/
     $.zBox = $.z.box;
 
@@ -363,10 +372,5 @@
         $.fn.z = {};
     }
 
-    /* Init Global aYaline jQuery Plugins Variable $.fn.z  */
-    $.fn.z.box = function(opts){
-        /* @todo: add code here */
-        return this;
-    };
 
 })(jQuery, document, window) ;
